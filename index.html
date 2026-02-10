@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>JS Tasks</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #333;
+
+
+
+}
+
+.block {
+  background: #fff;
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.block h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #0066ff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #004ecc;
+}
+
+.output {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #222;
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Домашнє завдання — Template Literals</h1>
+
+<div class="block">
+  <h2>1) greet()</h2>
+  <div id="greetOut" class="output"></div>
+</div>
+
+<div class="block">
+  <h2>2) square()</h2>
+  <div id="squareOut" class="output"></div>
+</div>
+
+<div class="block">
+  <h2>3) perimeter()</h2>
+  <div id="perimeterOut" class="output"></div>
+</div>
+
+<div class="block">
+  <h2>4) calc(callback)</h2>
+  <div id="calcOut" class="output"></div>
+</div>
+
+<div class="block">
+  <h2>5) Об’єкт</h2>
+  <div id="userOut" class="output"></div>
+</div>
+
+<div class="block">
+  <h2>6) Об’єкт з методом greet()</h2>
+  <div id="personOut" class="output"></div>
+</div>
+
+<div class="block">
+  <h2>7) Зміна тексту кнопки</h2>
+  <button id="btn">Натисни</button>
+</div>
+
+<div class="block">
+  <h2>8) Випадковий об’єкт з масиву</h2>
+  <button id="show">Показати</button>
+  <div id="randomOut" class="output"></div>
+</div>
+
+<div class="block">
+  <h2>9) Лічильник кліків</h2>
+  <button id="click">Клік</button>
+  <div id="count" class="output">0</div>
+</div>
+
+<div class="block">
+  <h2>10) Фільтрація масиву</h2>
+  <div id="filterOut" class="output"></div>
+</div>
+
+</div>
+
+<script>
+function greet(name) {
+  return `Привіт, ${name}!`
+}
+document.getElementById("greetOut").textContent = greet("Нiкiта")
+
+function square(num) {
+  return num * num
+}
+document.getElementById("squareOut").textContent = square(5)
+
+const perimeter = (a, b) => `Периметр: ${(a + b) * 2}`
+document.getElementById("perimeterOut").textContent = perimeter(3, 4)
+
+function calc(a, b, operation) {
+  return operation(a, b)
+}
+document.getElementById("calcOut").textContent = calc(5, 3, (x, y) => x + y)
+
+const user = { name: "Alex", age: 20 }
+document.getElementById("userOut").textContent = `User ${user.name} is ${user.age} years old`
+
+const person = {
+  name: "Alex",
+  greet() { return `Hello, ${this.name}` }
+}
+document.getElementById("personOut").textContent = person.greet()
+
+document.getElementById("btn").onclick = () =>
+  document.getElementById("btn").textContent = "Готово"
+
+const arr = [{ name: "A" }, { name: "B" }, { name: "C" }]
+document.getElementById("show").onclick = () => {
+  const r = arr[Math.floor(Math.random() * arr.length)]
+  document.getElementById("randomOut").textContent = r.name
+}
+
+let c = 0
+document.getElementById("click").onclick = () =>
+  document.getElementById("count").textContent = ++c
+
+const nums = [1, 5, 12, 3, 20, 7]
+const filtered = nums.filter(n => n > 10)
+document.getElementById("filterOut").textContent = filtered.join(", ")
+</script>
+
+</body>
+</html>
